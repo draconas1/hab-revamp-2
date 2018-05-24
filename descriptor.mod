@@ -1,5 +1,5 @@
-name="Habitat Revamp"
-archive="msrevamp_18.zip"
+name="Habitat Revamp 2"
+archive="msrevamp_2.zip"
 tags={
 	"Gameplay"
 	"Megastructures"
@@ -7,4 +7,4 @@ tags={
 }
 picture="Habitat_Revamp_1.jpg"
 remote_file_id="1144318391"
-supported_version="1.8.*"
+supported_version="2.1.*"
