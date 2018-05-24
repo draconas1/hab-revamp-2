@@ -1,0 +1,35 @@
+#########################
+#                       #
+# Habitat Revamp Events #
+#                       #
+#########################
+
+namespace = revamp
+
+### Set proper habitat capital building
+
+planet_event = {
+	id = revamp.1000
+	title = "revamp.1000.name"
+	desc = "revamp.1000.desc"
+	
+	hide_window = yes
+	
+	trigger = {
+		OR = {
+			is_planet_class = pc_habitat_revamp
+			is_planet_class = pc_habitat_revamp_sp
+		}
+	}
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_tile = {
+			limit = { 
+				has_building = "building_colony_shelter"
+			}
+			set_building = "building_hab_capital_revamp"
+		}
+	}
+}

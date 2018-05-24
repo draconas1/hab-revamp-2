@@ -1,0 +1,92 @@
+# Possible Deposit Variables
+# modifier - weight, will replace the weight value
+# modifier - factor, will multiply the weight value
+# resources, resource and amount
+# station = station class in orbit to gather
+# if you mix resources that are not supposed to be collected by an orbital station remember to put is_orbital_slot = no
+
+# Orbital Habitats
+
+d_synch_orbit = {
+	resources = {
+		sr_synch_orbit = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_low_orbit = {
+	resources = {
+		sr_low_orbit = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_atmosphere = {
+	resources = {
+		sr_atmosphere = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_near_solar = {
+	resources = {
+		sr_near_solar = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_corona = {
+	resources = {
+		sr_corona = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_photosphere = {
+	resources = {
+		sr_photosphere = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_asteroid = {
+	resources = {
+		sr_asteroid = 1
+	}
+	station = shipclass_mining_station
+	is_orbital_slot = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}

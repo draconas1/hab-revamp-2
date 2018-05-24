@@ -1,0 +1,1197 @@
+
+#####################
+# Habitat Buildings #
+#####################
+
+@hb1time = 300
+@hb1cost = 90
+@hb1effect = 3
+@hb1upkeep = 1.5
+
+@hb2time = 180
+@hb2cost = 90
+@hb2effect = 4
+@hb2upkeep = 2
+
+@hb3time = 180
+@hb3cost = 90
+@hb3effect = 5
+@hb3upkeep = 2
+
+@hb4time = 180
+@hb4cost = 150
+@hb4effect = 6
+@hb4upkeep = 2.5
+
+@hb5time = 180
+@hb5cost = 180
+@hb5effect = 8
+@hb5upkeep = 3.5
+
+@hscience1 = 2
+@hscience2 = 3
+@hscience3 = 4
+
+
+# Asteroid Mining
+
+building_hab_astro_mining_facility_1 = {
+	base_buildtime = @hb1time
+	
+	cost = {
+		minerals = @hb1cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+		}	
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_asteroid"
+			tile = {
+				has_resource = {
+					type = sr_asteroid
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_asteroid_mining_1"
+	}
+	
+	produced_resources = {
+		minerals = @hb1effect
+	}
+	
+	required_resources = {
+		energy = @hb1upkeep
+	}
+	
+	upgrades = {
+		building_hab_astro_mining_facility_2
+	}
+}
+
+building_hab_astro_mining_facility_2 = {
+	base_buildtime = @hb2time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb2cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_asteroid_mining_2"
+	}
+	
+	produced_resources = {
+		minerals = @hb2effect
+	}
+
+	required_resources = {
+		energy = @hb2upkeep
+	}
+	
+	upgrades = {
+		building_hab_astro_mining_facility_3
+	}
+}
+
+building_hab_astro_mining_facility_3 = {
+	base_buildtime = @hb3time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb3cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_asteroid_mining_3"
+	}
+	
+	produced_resources = {
+		minerals = @hb3effect
+	}
+
+	required_resources = {
+		energy = @hb3upkeep
+	}
+}
+
+# Food
+
+building_hab_agri_bay_1 = {
+	base_buildtime = @hb1time
+	
+	cost = {
+		minerals = @hb1cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+		}	
+	}
+	
+	prerequisites = {
+		"tech_habitat_food_1"
+	}
+	
+	produced_resources = {
+		food = @hb1effect
+	}
+	
+	required_resources = {
+		energy = @hb1upkeep
+	}
+
+	upgrades = {
+		building_hab_agri_bay_2
+	}
+}
+
+building_hab_agri_bay_2 = {
+	base_buildtime = @hb2time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb2cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_food_2"
+	}
+	
+	produced_resources = {
+		food = @hb2effect
+	}
+
+	required_resources = {
+		energy = @hb2upkeep
+	}
+	
+	upgrades = {
+		building_hab_agri_bay_3
+	}
+}
+
+building_hab_agri_bay_3 = {
+	base_buildtime = @hb3time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb3cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_food_3"
+	}
+	
+	produced_resources = {
+		food = @hb3effect
+	}
+
+	required_resources = {
+		energy = @hb3upkeep
+	}
+}
+
+# Energy
+
+building_hab_solar_power_1 = {
+	base_buildtime = @hb1time
+	
+	cost = {
+		minerals = @hb1cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+		}	
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_1"
+	}
+	
+	produced_resources = {
+		energy = @hb2effect
+	}
+	
+	upgrades = {
+		building_hab_solar_power_2
+	}
+}
+
+building_hab_solar_power_2 = {
+	base_buildtime = @hb2time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb2cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_2"
+	}
+	
+	produced_resources = {
+		energy = @hb3effect
+	}
+	
+	upgrades = {
+		building_hab_solar_power_3
+	}
+}
+
+building_hab_solar_power_3 = {
+	base_buildtime = @hb3time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb3cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_3"
+	}
+	
+	produced_resources = {
+		energy = @hb4effect
+	}
+}
+
+# Near Solar Energy
+
+building_hab_super_solar_power_1 = {
+	base_buildtime = @hb1time
+	
+	cost = {
+		minerals = @hb1cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_near_solar"
+			tile = {
+				has_resource = {
+					type = sr_near_solar
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_1"
+	}
+	
+	produced_resources = {
+		energy = @hb3effect
+	}
+
+		
+	upgrades = {
+		building_hab_super_solar_power_2
+	}
+}
+
+building_hab_super_solar_power_2 = {
+	base_buildtime = @hb2time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb2cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_2"
+	}
+	
+	produced_resources = {
+		energy = @hb4effect
+	}
+	
+	upgrades = {
+		building_hab_super_solar_power_3
+	}
+}
+
+building_hab_super_solar_power_3 = {
+	base_buildtime = @hb3time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb3cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_energy_3"
+	}
+	
+	produced_resources = {
+		energy = @hb5effect
+	}
+}
+
+# Science
+
+building_hab_lab_1 = {
+	base_buildtime = @hb1time
+	
+	cost = {
+		minerals = @hb1cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+		}	
+	}
+	
+	prerequisites = {
+		"tech_habitat_lab_1"
+	}
+	
+	produced_resources = {
+		engineering_research = @hscience1
+		physics_research = @hscience1
+		society_research = @hscience1
+	}
+	
+	required_resources = {
+		energy = @hscience1
+	}
+		
+	upgrades = {
+		building_hab_lab_2
+	}
+}
+
+building_hab_lab_2 = {
+	base_buildtime = @hb2time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb2cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_lab_2"
+	}
+	
+	produced_resources = {
+		engineering_research = @hscience2
+		physics_research = @hscience2
+		society_research = @hscience2
+	}
+		
+	required_resources = {
+		energy = @hscience2
+	}
+	
+	upgrades = {
+		building_hab_lab_3
+	}
+}
+
+building_hab_lab_3 = {
+	base_buildtime = @hb3time
+	is_listed = no
+	
+	cost = {
+		minerals = @hb3cost
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+	
+	prerequisites = {
+		"tech_habitat_lab_3"
+	}
+	
+	produced_resources = {
+		engineering_research = @hscience3
+		physics_research = @hscience3
+		society_research = @hscience3
+	}
+		
+	required_resources = {
+		energy = @hscience3
+	}
+}
+
+# Others
+
+building_hab_space_elevator = {
+	base_buildtime = 2000
+	
+	cost = {
+		minerals = 500
+		energy = 100
+	}
+	
+	produced_resources = {
+		minerals = 4
+		unity = 1
+	}
+	
+	required_resources = {
+		energy = 3
+	}
+	
+	prerequisites = {
+		"tech_engineering_lab_3"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_synch_orbit"
+			tile = {
+				has_resource = {
+					type = sr_synch_orbit
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		tile_resource_minerals_mult = 0.3
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_orbital_ring = {
+	base_buildtime = 2000
+	
+	cost = {
+		minerals = 500
+		energy = 100
+	}
+	
+	produced_resources = {
+		minerals = 4
+		unity = 1
+	}
+	
+	required_resources = {
+		energy = 3
+	}
+	
+	prerequisites = {
+		"tech_engineering_lab_3"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_low_orbit"
+			tile = {
+				has_resource = {
+					type = sr_low_orbit
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		tile_resource_minerals_mult = 0.3
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_stellar_lifter_driver = {
+	base_buildtime = 200
+	
+	cost = {
+		minerals = 500
+		energy = 100
+	}
+		
+	required_resources = {
+		energy = 2
+	}
+	
+	prerequisites = {
+		"tech_stellar_lifting"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_near_solar"
+			tile = {
+				has_resource = {
+					type = sr_near_solar
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		tile_resource_minerals_mult = 2
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+			has_ascension_perk = ap_galactic_wonders
+		}
+		
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_stellar_lifter_collector = {
+	base_buildtime = 400
+	
+	cost = {
+		minerals = 1000
+		energy = 100
+	}
+	
+	produced_resources = {
+		minerals = 2
+	}
+	
+	required_resources = {
+		energy = 2
+	}
+	
+	prerequisites = {
+		"tech_stellar_lifting"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_corona"
+			tile = {
+				has_resource = {
+					type = sr_corona
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+			has_ascension_perk = ap_galactic_wonders
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_photosphere_research = {
+	base_buildtime = 600
+	
+	cost = {
+		minerals = 1000
+		energy = 400
+		influence = 100
+	}
+	
+	produced_resources = {
+		engineering_research = 15
+		physics_research = 15
+		society_research = 15
+	}
+	
+	required_resources = {
+		energy = 15
+	}
+	
+	prerequisites = {
+		"tech_tb_photosphere"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_photosphere"
+			tile = {
+				has_resource = {
+					type = sr_photosphere
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+			has_ascension_perk = ap_galactic_wonders
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_corona_research = {
+	base_buildtime = 400
+	
+	cost = {
+		minerals = 500
+		energy = 200
+		influence = 50
+	}
+	
+	produced_resources = {
+		engineering_research = 8
+		physics_research = 8
+		society_research = 8
+	}
+	
+	required_resources = {
+		energy = 8
+	}
+	
+	prerequisites = {
+		"tech_tb_corona"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_corona"
+			tile = {
+				has_resource = {
+					type = sr_corona
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+building_hab_atmospheric_collector_1 = {
+	base_buildtime = 500
+	
+	cost = {
+		minerals = 500
+		energy = 100
+	}
+	
+	produced_resources = {
+		minerals = 5
+	}
+	
+	required_resources = {
+		energy = 2
+	}
+	
+	prerequisites = {
+		"tech_tb_atmosphere"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_atmosphere"
+			tile = {
+				has_resource = {
+					type = sr_atmosphere
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+
+		
+	upgrades = {
+		building_hab_atmospheric_collector_2
+	}
+}
+
+building_hab_atmospheric_collector_2 = {
+	base_buildtime = 500
+	is_listed = no
+	
+	cost = {
+		minerals = 500
+		energy = 100
+	}
+	
+	produced_resources = {
+		minerals = 8
+	}
+	
+	required_resources = {
+		energy = 3
+	}
+	
+	prerequisites = {
+		"tech_tb_atmosphere"
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_atmosphere"
+			tile = {
+				has_resource = {
+					type = sr_atmosphere
+					amount > 0
+				}
+			}
+		}
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+		
+		owner = {
+			has_ascension_perk = ap_voidborn
+		}
+				
+		NOT = {
+			owner = {
+				has_ascension_perk = ap_mastery_of_nature
+			}
+		}
+	}
+}
+
+#####################
+# Vanilla Buildings #
+#####################
+
+building_hab_capital_revamp = {
+	base_buildtime = 0
+	
+	cost = {
+	}
+	
+	produced_resources = {
+		energy = 5
+		unity = 2
+	}
+	
+	produced_resource_trigger = {
+		modifier = {
+			has_non_swapped_tradition = tr_expansion_colonization_fever
+			has_swapped_tradition = tr_expansion_colonization_fever_machine
+			has_swapped_tradition = tr_expansion_colonization_fever_hive
+			resources = {
+				unity = 1
+			}
+		}
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.2
+	}
+	
+	potential = {
+		planet = {
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+		}	
+	}
+	
+	planet_unique = yes
+	capital = yes
+	
+	ai_replace = no
+}
+
+building_hab_cultural_center_revamp = {
+	base_buildtime = 730
+	planet_unique = yes
+	
+	cost = {
+		minerals = 400
+	}
+	
+	potential = {
+		NOT = {
+			owner = { has_authority = auth_machine_intelligence }
+		}
+		planet = {		
+			OR = {
+				is_planet_class = pc_habitat_revamp
+				is_planet_class = pc_habitat_revamp_sp
+			}
+			has_building = "building_hab_capital_revamp"
+		}	
+	}
+	
+	destroy_if = {
+		exists = owner
+		owner = { has_authority = auth_machine_intelligence }
+	}
+	
+	produced_resources = {		
+		unity = 4
+	}
+	
+	planet_modifier = {
+		pop_citizen_happiness = 0.05
+	}
+	
+	required_resources = {
+		energy = 4
+	}
+	
+	ai_weight = {
+		weight = 300
+	}
+}

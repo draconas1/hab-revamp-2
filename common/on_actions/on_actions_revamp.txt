@@ -1,0 +1,16 @@
+# A planet has begun the colonization process.
+# Scope = Planet
+
+on_colonization_started = {
+	events = {
+		revamp.1000
+	}
+}
+
+# A planet has been colonized.
+# Scope = Planet
+on_colonized = {
+	events = {
+		revamp.1000
+	}
+}

@@ -1,0 +1,124 @@
+Mod Description
+
+it never made any sense to me that you spent tons of resources building a huge habitat, only for it to sit mostly empty for decades while the population grew. This mod grew out of a desire to fix that, though it ended up being quite a bit beyond that.
+
+Instead of building 16 tile habitats, you are able to build 25 tile habitats that have 24 tile blockers, preventing more than a single population. In order to expand, you'll need to build each 'section' of the habitat one at a time. As a result, habitats are much cheaper to start with, though you'll actually end up paying more in the long run to balance out the benefits.
+
+
+As well, this mod introduces a variety of specialized habitats depending on their location, as well as special tiles which represent special locations on the parent body:
+
+Colony Habitat: Built around a colonized planet, this represents the population living just off planet. It has special tiles for Low and Synchronous orbit habitats, including the space elevator and orbital ring buildings. It also has a atmosphere tile representing a habitat dipping into the atmosphere itself.
+
+Gas Giant Habitat: Built around a gas giant, this habitat has many atmosphere tiles, with the option to build gas collection balloons.
+
+Asteroid Habitat: Built around an asteroid, this habitat has asteroid tiles which allow for the production of minerals.
+
+Solar Habitat: Built around a star, this habitat allows for more efficient solar power collection. As well, it has special tiles for the corona and photosphere, allowing late game research opportunities. As well, there is a late game opportunity to exploit a star for stellar lifting, producing vast quantities of minerals, though at a steep startup cost.
+
+
+The colony habitat can be unlocked in the early game with tech, allowing the possibility for an 'all habitat' game, excepting the home planet. On the other hand, it will be very expensive compared to using planets, and you'll be limited to very basic buildings without the megastructure ascension perks.
+
+Most of the new habitat buildings and the specialized habitats require the Voidborne ascension perk, and some of the late game buildings require the Master Builders perk. Be warned, the Mastery of Nature perk will prevent you from using the content of this mod, since your people would see no reason to live among the stars once they've created a utopia at home (alright, it's really because the -50% tile blocker clearing cost breaks the main mechanism I've used, so I made this everything in this mod mutualy exclusive with it).
+
+Since I did not overwrite any vanilla files, This should be compatible with pretty much all other mods. Having said that, anything that changes the names of vanilla perks, techs, etc, could cause unexpected problems.
+
+
+Not sure if I'll keep up development with this, but I do have a few additional ideas I'm considering:
+- Special Habitats for frozen worlds, molten worlds, and black holes, including unique tiles and respective buildings.
+- Buildings in a Colony habitat which create modifiers for the home planet, e.g. making a space elevator reduce planet ship building costs (not even sure if this is possible)
+- Allow undersized planets to add habitat tiles representing additional populations living in artificial locations like floating cities or artificial caves, with possible unique buildings associated with them.
+- Just generally more buildings for the special tiles. Right now there are only 1 or 2 per special tile..
+
+No promises on the AI for this, but I've tried to balance everything out. If anyone has any bugs, ideas, or general comments, I'd be happy to hear them. If anyone wants to use this content in their own mod, just let me know, and I'd be happy to assist.
+
+######################################################
+
+
+
+ - DONE habitats much cheaper, but start with only one terrain and must build each population spot individually, locked with terrain blocker. This simulates building up habitats and makes them early game usable. 
+ - DONE habitats around asteroids have asteroid terrain locked, ones around suns have Corona tiles, maybe stellar facing terrain? Gas giant ones have atmosphere terrain
+ - DONE create techs and building that take advantage of those terrain modifiers, like stellar lifters (late game building, add some minerals and energy, increase mineral rate of other stellar lifters on habitat, maybe possibly change star type?), gas giant blimps, etc.
+ - Dyson sphere becomes habitat with unique tiles which must be unlocked and manned, but that give great energy.
+ - Science Nexus becomes habitat built around black hole/neutron star, with unique unlockable tiles.
+ - DONE possibly have tile types for normal habitats corresponding to orbits or legrange points?
+ - allow smaller planets to add terrain with low orbit artificial tiles, at a cost, allowing habitat only buildings on planets.
+ - DONE Starting bio tech, orbital habitation, unlocks low orbit, medium orbit, high orbit tile clearing, planet habitat
+ - DONE starting engineering tech, asteroid mining, unlocks asteroid habitat, asteroid surface tile clearing
+ - DONE starting physics tech, solar exploration, unlocks solar orbit tile clearing, solar habitat
+ - frozen and molten planet habitats with special tiles and buildings
+
+ To Do:
+ - Set up planetary modifiers, including ones to the home planet of colony habitats.
+ 
+ 
+ Buildings:
+ 
+ Low Orbit:
+	- Early tech:	Planetary Network 1 - See if we can make some sort of modifier to the planet being orbited
+	- Mid tech:		Planetary Network 2
+	- Late tech:	Planetary Network 3
+					Orbital ring
+
+ Synch Orbit:
+	- Early tech:	None
+	- Mid tech:		Planetary Defences - See if we can make some sort of modifier to the planet being orbited
+	- Late tech:	Space Elevator
+
+ Near Solar: (Just went with ordinary powerplants; maybe have dedicated Dyson Swarm megastructure? for late game)
+	- Early tech: 	Dyson Swarm 1
+	- Mid tech:		Dyson Swarm 2
+	- Late tech: 	Dyson Swarm 3
+					Stellar Lifter - Increases effectiveness of Collectors
+
+ Corona: (DONE)
+	- Early tech:	None
+	- Mid tech:		Coronal Research Center
+	- Late tech:	Stellar Lifter Collector - Produces minerals based on number of near solar drives
+	
+ Photosphere: (DONE)
+	- Early tech:	None
+	- Mid tech:		None
+	- Late tech:	Solar Surface Research Center
+
+ Atmosphere: (DONE)
+	- Early tech:	None
+	- Mid tech:		Gas Collectors 1
+	- Late tech:	Gas Collectors 2
+	
+ Asteroid: (DONE)
+	- Early tech:	Mineral Extraction 1
+	- Mid tech:		Mineral Extraction 2
+	- Late tech:	Mineral Extraction 3
+	
+ Generic Buildings: (DONE)
+	- Early tech:	Energy/Food/Science 1
+	- Mid tech:		Energy/Food/Science 2
+	- Late tech:	Energy/Food/Science 3 
+	
+ Technologies: (DONE)
+ 
+ Habitats:
+	- Early tech:	Asteroid Mining - Eng tech, enables mineral extraction 1
+					Near Planet Habitation - Bio tech, normal food collection
+					Near Solar Habitation - Physics tech, enables solar collection 1, plus normal solar for others
+	- Mid tech:		Coronal Habitation - Phy tech, allows corona
+					High Altitude Habitation - Bio tech, allows atmosphere
+	- Late tech:	Solar Colonization - Eng tech, allows photosphere and research building
+					Stellar Lifting - Eng tech, allows stellar lifting
+	
+ Research:
+	- Early tech:	Habitat labratories - Eng tech, requires all three lvl 1 science buildings
+	- Mid tech:		Deep Space Research - Phy tech, requires all three lvl 2 sience buildings
+	- Late tech:	Orbital Adaption - Bio tech, allows photosphere research, requires all three lvl 3 sience buildings
+	
+ Minerals:
+	- Mid tech:		Deep Core Extraction, Eng tech
+	- Late tech:	Exotic Deep Space Materials, Eng tech
+	
+ Energy:
+	- Mid tech:		Solar Exploitation, Phy tech
+	- Late tech:	Solar Enclosure, Phy tech
+	
+ Food:
+	- Mid tech:		Space Specialized Species, Bio tech
+	- Late tech:	Full Habitat Biospheres, Bio tech, increases habitability of habitats by 20%

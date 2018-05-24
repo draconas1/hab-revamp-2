@@ -1,0 +1,725 @@
+# see README.txt for example
+
+habitat_colonized = {
+	entity = ""
+	construction_entity = "orbital_habitat_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	entity_offset = { x = 7 y = -7 }
+	build_time = 360
+	build_cost = {
+		minerals = 500
+		influence = 50
+	}
+	construction_blocks_others = no
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	prerequisites = {
+		"tech_habitat_food_1"
+	}
+	
+	potential = {
+		NOT = {has_ascension_perk = ap_mastery_of_nature}
+	}	
+	
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#can_build_megastructure_on_planet = yes
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				has_orbital_station = no
+			}
+
+			custom_tooltip = {
+				fail_text = "requires_not_star"
+				is_star = no
+			}
+
+			custom_tooltip = {
+				fail_text = "requires_not_uncolonized_planet"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+				colonizeable_planet = yes
+				has_owner = yes
+			}
+			
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	
+	on_build_complete = {
+		If = {
+			limit = {
+				fromfrom.planet = {
+					has_spaceport = yes
+				}
+			}
+			spawn_planet = {
+				class = "pc_habitat_revamp"
+				location = fromfrom.planet
+				orbit_location = yes
+				orbit_angle_offset = 135
+				orbit_distance_offset = 9.899
+				size = 25
+				has_ring = no
+				
+				init_effect = {
+					set_name = "HABITAT_PLANET_NAME"
+					set_planet_entity = {
+						entity = "orbital_habitat_entity"
+						graphical_culture = fromfrom
+					}
+					
+					surveyed = {
+						set_surveyed = yes
+						surveyor = FROM
+					}
+					
+					set_all_comms_surveyed = yes
+					
+					while = {
+						limit = {
+							any_tile = { has_blocker = yes }
+						}
+						random_tile = {
+							limit = { has_blocker = yes }
+							remove_blocker = yes
+						}
+					}
+					
+					while = {
+						limit = {
+							any_tile = { has_blocker = no }
+						}
+						random_tile = {
+							limit = { has_blocker = no }
+							set_blocker = "tb_unbuilt_habitat"
+						}
+					}
+					
+					random_tile = {
+						limit = {
+								not{
+									any_neighboring_tile {
+										num_adjacent_tiles < 4
+									}
+								}
+						}
+						
+						add_deposit =  d_atmosphere
+						set_blocker = "tb_unbuilt_atmosphere"
+
+						every_neighboring_tile = {
+							add_deposit =  d_low_orbit
+						}
+					}
+					
+					random_tile = {
+						limit = { num_adjacent_tiles < 3 }
+						add_deposit = d_synch_orbit
+						
+						every_neighboring_tile = {
+							add_deposit = d_synch_orbit
+						}
+					}				
+
+					random_tile = {
+						limit = { num_adjacent_tiles < 3 has_deposit = none }
+						add_deposit = d_synch_orbit
+						
+						every_neighboring_tile = {
+							add_deposit = d_synch_orbit
+						}
+					}
+					
+					random_tile = {
+						limit = { has_deposit = none }
+						remove_blocker = yes
+					}
+					
+					copy_orbital_tile = fromfrom.planet
+					set_planet_flag = megastructure
+					set_planet_flag = habitat				
+				}				
+			}
+			Else = {
+				spawn_planet = {
+					class = "pc_habitat_revamp_sp"
+					location = fromfrom.planet
+					orbit_location = yes
+					orbit_angle_offset = 135
+					orbit_distance_offset = 9.899
+					size = 25
+					has_ring = no
+					
+					init_effect = {
+						set_name = "HABITAT_PLANET_NAME"
+						set_planet_entity = {
+							entity = "orbital_habitat_entity"
+							graphical_culture = fromfrom
+						}
+						
+						surveyed = {
+							set_surveyed = yes
+							surveyor = FROM
+						}
+						
+						set_all_comms_surveyed = yes
+						
+						while = {
+							limit = {
+								any_tile = { has_blocker = yes }
+							}
+							random_tile = {
+								limit = { has_blocker = yes }
+								remove_blocker = yes
+							}
+						}
+						
+						while = {
+							limit = {
+								any_tile = { has_blocker = no }
+							}
+							random_tile = {
+								limit = { has_blocker = no }
+								set_blocker = "tb_unbuilt_habitat"
+							}
+						}
+						
+						random_tile = {
+							limit = {
+									not{
+										any_neighboring_tile {
+											num_adjacent_tiles < 4
+										}
+									}
+							}
+							
+							add_deposit =  d_atmosphere
+							set_blocker = "tb_unbuilt_atmosphere"
+
+							every_neighboring_tile = {
+								add_deposit =  d_low_orbit
+							}
+						}
+						
+						random_tile = {
+							limit = { num_adjacent_tiles < 3 }
+							add_deposit = d_synch_orbit
+							
+							every_neighboring_tile = {
+								add_deposit = d_synch_orbit
+							}
+						}				
+
+						random_tile = {
+							limit = { num_adjacent_tiles < 3 has_deposit = none }
+							add_deposit = d_synch_orbit
+							
+							every_neighboring_tile = {
+								add_deposit = d_synch_orbit
+							}
+						}
+						
+						random_tile = {
+							limit = { has_deposit = none }
+							remove_blocker = yes
+						}
+						
+						copy_orbital_tile = fromfrom.planet
+						set_planet_flag = megastructure
+						set_planet_flag = habitat				
+					}				
+				}
+			}
+		}
+
+		
+		fromfrom.planet = {
+			set_planet_flag = has_megastructure
+		}
+		remove_megastructure = fromfrom
+		from = { country_event =  { id = utopia.61 } }
+	}
+}
+
+habitat_solar = {
+	entity = ""
+	construction_entity = "orbital_habitat_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	entity_offset = { x = -14 y = -14 }
+	build_time = 360
+	build_cost = {
+		minerals = 500
+		influence = 50
+	}
+	construction_blocks_others = no
+
+	potential = {
+		has_ascension_perk = ap_voidborn
+		NOT = {has_ascension_perk = ap_mastery_of_nature}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#can_build_megastructure_on_planet = yes
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				has_orbital_station = no
+			}
+
+			custom_tooltip = {
+				fail_text = "must_build_around_star"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+				is_star = yes
+			}
+			
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	
+	on_build_complete = {
+		spawn_planet = {
+			class = "pc_habitat_revamp"
+			location = fromfrom.planet
+			orbit_location = yes
+			orbit_angle_offset = 45
+			orbit_distance_offset = 19.798
+			size = 25
+			has_ring = no
+			
+			init_effect = {
+				set_name = "HABITAT_PLANET_NAME"
+				set_planet_entity = {
+					entity = "orbital_habitat_entity"
+					graphical_culture = fromfrom
+				}
+				
+				surveyed = {
+					set_surveyed = yes
+					surveyor = FROM
+				}
+				
+				set_all_comms_surveyed = yes
+				
+				while = {
+					limit = {
+						any_tile = { has_blocker = yes }
+					}
+					random_tile = {
+						limit = { has_blocker = yes }
+						remove_blocker = yes
+					}
+				}
+				
+				random_tile = {
+					limit = {
+							not{
+								any_neighboring_tile {
+									num_adjacent_tiles < 4
+								}
+							}
+					}
+					
+					set_blocker = "tb_unbuilt_photosphere"
+					add_deposit =  d_photosphere
+
+					every_neighboring_tile = {
+						add_deposit =  d_corona
+						set_blocker = "tb_unbuilt_corona"
+					}
+				}
+				
+				every_tile = {
+					limit = { has_deposit = none }
+					add_deposit = d_near_solar
+					set_blocker = "tb_unbuilt_habitat"
+				}
+
+				random_tile = {
+					limit = { has_deposit = d_near_solar }
+					remove_blocker = yes
+				}
+				
+				copy_orbital_tile = fromfrom.planet
+				set_planet_flag = megastructure
+				set_planet_flag = habitat				
+			}				
+		}
+		
+		fromfrom.planet = {
+			set_planet_flag = has_megastructure
+		}
+		remove_megastructure = fromfrom
+		from = { country_event =  { id = utopia.61 } }
+	}
+}
+
+habitat_gas_giant = {
+	entity = ""
+	construction_entity = "orbital_habitat_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	entity_offset = { x = -7 y = -7 }
+	build_time = 360
+	build_cost = {
+		minerals = 500
+		influence = 50
+	}
+	construction_blocks_others = no
+
+	potential = {
+		has_ascension_perk = ap_voidborn
+		NOT = {has_ascension_perk = ap_mastery_of_nature}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#can_build_megastructure_on_planet = yes
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				has_orbital_station = no
+			}
+
+			custom_tooltip = {
+				fail_text = "requires_gas_giant"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+				is_planet_class = "pc_gas_giant"
+			}
+			
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	
+	on_build_complete = {
+		spawn_planet = {
+			class = "pc_habitat_revamp"
+			location = fromfrom.planet
+			orbit_location = yes
+			orbit_angle_offset = 45
+			orbit_distance_offset = 9.899
+			size = 25
+			has_ring = no
+			
+			init_effect = {
+				set_name = "HABITAT_PLANET_NAME"
+				set_planet_entity = {
+					entity = "orbital_habitat_entity"
+					graphical_culture = fromfrom
+				}
+				
+				surveyed = {
+					set_surveyed = yes
+					surveyor = FROM
+				}
+				
+				set_all_comms_surveyed = yes
+				
+				while = {
+					limit = {
+						any_tile = { has_blocker = yes }
+					}
+					random_tile = {
+						limit = { has_blocker = yes }
+						remove_blocker = yes
+					}
+				}
+				
+				random_tile = {
+					limit = {
+							not{
+								any_neighboring_tile {
+									num_adjacent_tiles < 4
+								}
+							}
+					}
+					
+
+					add_deposit = d_atmosphere
+					set_blocker = "tb_unbuilt_atmosphere"
+
+					every_neighboring_tile = {
+						add_deposit = d_atmosphere
+						set_blocker = "tb_unbuilt_atmosphere"
+						
+						every_neighboring_tile = {
+							limit = {
+								num_adjacent_tiles > 3
+								has_deposit = none
+							}
+							add_deposit = d_atmosphere
+							set_blocker = "tb_unbuilt_atmosphere"
+						}
+					}
+				}
+				
+				every_tile = {
+					limit = { has_deposit = none }
+					set_blocker = "tb_unbuilt_habitat"
+				}
+
+				random_tile = {
+					limit = { has_deposit = none }
+					remove_blocker = yes
+				}
+				
+				copy_orbital_tile = fromfrom.planet
+				set_planet_flag = megastructure
+				set_planet_flag = habitat				
+			}				
+		}
+		
+		fromfrom.planet = {
+			set_planet_flag = has_megastructure
+		}
+		remove_megastructure = fromfrom
+		from = { country_event =  { id = utopia.61 } }
+	}
+}
+
+habitat_asteroid = {
+	entity = ""
+	construction_entity = "orbital_habitat_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	entity_offset = { x = -3 y = -3 }
+	build_time = 360
+	build_cost = {
+		minerals = 500
+		influence = 50
+	}
+	construction_blocks_others = no
+	
+	potential = {
+		has_ascension_perk = ap_voidborn
+		NOT = {has_ascension_perk = ap_mastery_of_nature}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#can_build_megastructure_on_planet = yes
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				has_orbital_station = no
+			}
+
+			custom_tooltip = {
+				fail_text = "requires_asteroid"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+				is_planet_class = "pc_asteroid"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	
+	on_build_complete = {
+		spawn_planet = {
+			class = "pc_habitat_revamp"
+			location = fromfrom.planet
+			orbit_location = yes
+			orbit_angle_offset = 45
+			orbit_distance_offset = 4.242
+			size = 25
+			has_ring = no
+			
+			init_effect = {
+				set_name = "HABITAT_PLANET_NAME"
+				set_planet_entity = {
+					entity = "orbital_habitat_entity"
+					graphical_culture = fromfrom
+				}
+				
+				surveyed = {
+					set_surveyed = yes
+					surveyor = FROM
+				}
+				
+				set_all_comms_surveyed = yes
+				
+				while = {
+					limit = {
+						any_tile = { has_blocker = yes }
+					}
+					random_tile = {
+						limit = { has_blocker = yes }
+						remove_blocker = yes
+					}
+				}
+				
+				random_tile = {
+					limit = {
+							not{
+								any_neighboring_tile {
+									num_adjacent_tiles < 4
+								}
+							}
+					}
+					
+					add_deposit = d_asteroid
+					set_blocker = "tb_unbuilt_asteroid"
+
+					every_neighboring_tile = {
+						add_deposit = d_asteroid
+						set_blocker = "tb_unbuilt_asteroid"
+					}
+					
+					random_neighboring_tile = {
+						random_neighboring_tile = {
+							limit = {
+								num_adjacent_tiles > 3
+								has_deposit = none
+							}
+							add_deposit = d_asteroid
+							set_blocker = "tb_unbuilt_asteroid"
+							
+							every_neighboring_tile = {
+								limit = { has_deposit = none }
+								add_deposit = d_asteroid
+								set_blocker = "tb_unbuilt_asteroid"
+							}
+						}
+					}
+				}
+				
+				every_tile = {
+					limit = { has_deposit = none }
+					set_blocker = "tb_unbuilt_habitat"
+				}
+
+				random_tile = {
+					limit = { has_deposit = none }
+					remove_blocker = yes
+				}
+				
+				copy_orbital_tile = fromfrom.planet
+				set_planet_flag = megastructure
+				set_planet_flag = habitat				
+			}				
+		}
+		
+		fromfrom.planet = {
+			set_planet_flag = has_megastructure
+		}
+		remove_megastructure = fromfrom
+		from = { country_event =  { id = utopia.61 } }
+	}
+}
