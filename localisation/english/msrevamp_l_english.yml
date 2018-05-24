@@ -105,7 +105,7 @@
  tech_asteroid_mining_2:0 "Deep Core Extraction"
  tech_asteroid_mining_2_desc:0 "Although not particularly large, much of the mineral value of asteroids is located well below the surface."
  tech_asteroid_mining_3:0 "Exotic Deep Space Materials"
- tech_asteroid_mining_2_desc:0 "There are quite a few materials which cannot easily be manufactured under gravity, making low g manufacturing an attractive option."
+ tech_asteroid_mining_3_desc:0 "There are quite a few materials which cannot easily be manufactured under gravity, making low g manufacturing an attractive option."
  tech_stellar_lifting:0 "Stellar Lifting"
  tech_stellar_lifting_desc:0 "Our scientists claim they can lift minerals right from a star itself, though our engineers cried out in dismay when drafted onto the project."
  tech_habitat_food_1:0 "Near Planet Habitation"
