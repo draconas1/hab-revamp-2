@@ -1,42 +1,3 @@
-##################
-### TECH COSTS ###
-##################
-#If you change any of these, use replace in files so the values are the same across all files
-
-@tier1cost1 = 360
-@tier1cost2 = 480
-@tier1cost3 = 600
-@tier1cost4 = 720
-
-@tier2cost1 = 1000
-@tier2cost2 = 1400
-@tier2cost3 = 1800
-@tier2cost4 = 2200
-
-@tier3cost1 = 3000
-@tier3cost2 = 4000
-@tier3cost3 = 5000
-@tier3cost4 = 6000
-
-####################
-### TECH WEIGHTS ###
-####################
-
-@tier1weight1 = 100
-@tier1weight2 = 95
-@tier1weight3 = 90
-@tier1weight4 = 85
-
-@tier2weight1 = 75
-@tier2weight2 = 70
-@tier2weight3 = 65
-@tier2weight4 = 60
-
-@tier3weight1 = 50
-@tier3weight2 = 45
-@tier3weight3 = 40
-@tier3weight4 = 35
-
 #####################################
 ######### HABITAT BUILDINGS #########
 #####################################
@@ -197,12 +158,12 @@ tech_asteroid_mining_3 = {
 }
 
 tech_stellar_lifting = {
-	cost = 8000
+	cost = @tier4cost1
 	area = engineering
 	tier = 4
 	category = { field_manipulation }
 	prerequisites = { "tech_tb_photosphere"}
-	weight = 0.25
+	weight = @tier4weight3
 	
 	weight_groups = {
 		tile_blockers
@@ -561,7 +522,7 @@ tech_habitat_energy_3 = {
 # Research
 
 tech_habitat_lab_1 = {
-	cost = @tier1cost1
+	cost = @tier2cost1
 	area = engineering
 	tier = 2
 	category = { voidcraft }
@@ -613,7 +574,7 @@ tech_habitat_lab_1 = {
 }
 
 tech_habitat_lab_2 = {
-	cost = @tier2cost2
+	cost = @tier3cost2
 	area = physics
 	tier = 3
 	category = { field_manipulation }
@@ -679,12 +640,12 @@ tech_habitat_lab_2 = {
 }
 
 tech_habitat_lab_3 = {
-	cost = @tier3cost3
+	cost = @tier4cost1
 	area = society
 	tier = 4
 	category = { biology }
 	prerequisites = { "tech_physics_lab_3" "tech_engineering_lab_3" "tech_biolab_3"}
-	weight = @tier3weight4
+	weight = @tier4weight1
 		
 	# # unlock habitat lab lvl 3
 	
@@ -931,7 +892,7 @@ tech_tb_corona = {
 }
 
 tech_tb_photosphere = {
-	cost = 8000
+	cost = @tier4cost1
 	area = engineering
 	tier = 4
 	category = { field_manipulation }

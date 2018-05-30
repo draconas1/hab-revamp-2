@@ -5,31 +5,38 @@ habitat_colonized = {
 	construction_entity = "orbital_habitat_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = yes
-	entity_offset = { x = 7 y = -7 }
+	entity_offset = { x = -7 y = -7 }
 	build_time = 360
 	build_cost = {
 		minerals = 500
 		influence = 50
 	}
 	construction_blocks_others = no
-
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_inside_border"
-			is_inside_border = from
-		}
-	}
-
+	
 	prerequisites = {
 		"tech_habitat_food_1"
 	}
 	
 	potential = {
 		NOT = {has_ascension_perk = ap_mastery_of_nature}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
 	}	
 	
 	placement_rules = {
 		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_surveyed_planet"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+			}
 			custom_tooltip = {
 				fail_text = "requires_no_anomaly"
 				NOT = { has_anomaly = yes }
@@ -43,6 +50,13 @@ habitat_colonized = {
 					solar_system = {
 						has_star_flag = ring_world_built
 					}
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_ringworld_habitable_damaged
+					is_planet_class = pc_ringworld_tech
+					is_planet_class = pc_ringworld_tech_damaged
+					is_planet_class = pc_ringworld_seam
+					is_planet_class = pc_ringworld_seam_damaged
+					is_planet_class = pc_habitat
 				}
 			}
 			custom_tooltip = {
@@ -63,8 +77,7 @@ habitat_colonized = {
 				}
 				colonizeable_planet = yes
 				has_owner = yes
-			}
-			
+			}						
 		}
 	}
 	
@@ -76,17 +89,11 @@ habitat_colonized = {
 	on_build_cancel = {}
 	
 	on_build_complete = {
-		If = {
-			limit = {
-				fromfrom.planet = {
-					has_spaceport = yes
-				}
-			}
-			spawn_planet = {
+		spawn_planet = {
 				class = "pc_habitat_revamp"
 				location = fromfrom.planet
 				orbit_location = yes
-				orbit_angle_offset = 135
+				orbit_angle_offset = 45
 				orbit_distance_offset = 9.899
 				size = 25
 				has_ring = no
@@ -170,97 +177,6 @@ habitat_colonized = {
 					set_planet_flag = habitat				
 				}				
 			}
-			Else = {
-				spawn_planet = {
-					class = "pc_habitat_revamp_sp"
-					location = fromfrom.planet
-					orbit_location = yes
-					orbit_angle_offset = 135
-					orbit_distance_offset = 9.899
-					size = 25
-					has_ring = no
-					
-					init_effect = {
-						set_name = "HABITAT_PLANET_NAME"
-						set_planet_entity = {
-							entity = "orbital_habitat_entity"
-							graphical_culture = fromfrom
-						}
-						
-						surveyed = {
-							set_surveyed = yes
-							surveyor = FROM
-						}
-						
-						set_all_comms_surveyed = yes
-						
-						while = {
-							limit = {
-								any_tile = { has_blocker = yes }
-							}
-							random_tile = {
-								limit = { has_blocker = yes }
-								remove_blocker = yes
-							}
-						}
-						
-						while = {
-							limit = {
-								any_tile = { has_blocker = no }
-							}
-							random_tile = {
-								limit = { has_blocker = no }
-								set_blocker = "tb_unbuilt_habitat"
-							}
-						}
-						
-						random_tile = {
-							limit = {
-									not{
-										any_neighboring_tile {
-											num_adjacent_tiles < 4
-										}
-									}
-							}
-							
-							add_deposit =  d_atmosphere
-							set_blocker = "tb_unbuilt_atmosphere"
-
-							every_neighboring_tile = {
-								add_deposit =  d_low_orbit
-							}
-						}
-						
-						random_tile = {
-							limit = { num_adjacent_tiles < 3 }
-							add_deposit = d_synch_orbit
-							
-							every_neighboring_tile = {
-								add_deposit = d_synch_orbit
-							}
-						}				
-
-						random_tile = {
-							limit = { num_adjacent_tiles < 3 has_deposit = none }
-							add_deposit = d_synch_orbit
-							
-							every_neighboring_tile = {
-								add_deposit = d_synch_orbit
-							}
-						}
-						
-						random_tile = {
-							limit = { has_deposit = none }
-							remove_blocker = yes
-						}
-						
-						copy_orbital_tile = fromfrom.planet
-						set_planet_flag = megastructure
-						set_planet_flag = habitat				
-					}				
-				}
-			}
-		}
 
 		
 		fromfrom.planet = {
